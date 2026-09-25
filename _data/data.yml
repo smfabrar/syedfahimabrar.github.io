@@ -15,6 +15,16 @@ sidebar:
       label: Book a quick chat
       url: https://cal.fahimabrar.com/abrarfahim/quick-chat
       icon: fas fa-calendar-check
+      embed:
+        origin: https://cal.fahimabrar.com
+        namespace: quick-chat
+        link: abrarfahim/quick-chat
+        config:
+          layout: month_view
+          useSlotsViewOnSmallScreen: "true"
+        ui:
+          hideEventTypeDetails: false
+          layout: month_view
 
     # Sidebar links
     email: mail@fahimabrar.com

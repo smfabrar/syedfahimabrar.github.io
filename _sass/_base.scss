@@ -107,13 +107,16 @@ p {
     width: 100%;
     margin-bottom: 26px;
     padding: 10px 12px;
+    border: 0;
     border-radius: 4px;
     background: #fff;
     color: #174e62;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.35;
     text-decoration: none;
+    cursor: pointer;
     &:hover {
       background: #eaf7fa;
       color: #174e62;

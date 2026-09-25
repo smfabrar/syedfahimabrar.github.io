@@ -1,9 +1,19 @@
 <div class="contact-container container-block">
   {% if sidebar.booking.url %}
+  {% if sidebar.booking.embed %}
+  <button class="booking-link" type="button"
+          data-cal-link="{{ sidebar.booking.embed.link | escape }}"
+          data-cal-namespace="{{ sidebar.booking.embed.namespace | escape }}"
+          data-cal-config='{{ sidebar.booking.embed.config | jsonify | escape }}'>
+    <i class="{{ sidebar.booking.icon | default: 'fas fa-calendar-check' | escape }}" aria-hidden="true"></i>
+    <span>{{ sidebar.booking.label | escape }}</span>
+  </button>
+  {% else %}
   <a class="booking-link" href="{{ sidebar.booking.url | escape }}" target="_blank" rel="noopener noreferrer">
     <i class="{{ sidebar.booking.icon | default: 'fas fa-calendar-check' | escape }}" aria-hidden="true"></i>
     <span>{{ sidebar.booking.label | escape }}</span>
   </a>
+  {% endif %}
   {% endif %}
   <ul class="list-unstyled contact-list">
 
