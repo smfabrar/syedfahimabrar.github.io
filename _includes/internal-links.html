@@ -1,0 +1,16 @@
+{% assign internal_links = site.data.data.sidebar.internal-links %}
+{% if internal_links.links.size > 0 %}
+<div class="internal-links-container container-block">
+  <h2 class="container-block-title">{{ internal_links.title | escape }}</h2>
+  <ul class="list-unstyled contact-list">
+    {% for link in internal_links.links %}
+    <li>
+      <a href="{{ link.url | escape }}" target="_blank" rel="noopener noreferrer">
+        <i class="{{ link.icon | escape }} fa-fw" aria-hidden="true"></i>
+        {{ link.label | escape }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

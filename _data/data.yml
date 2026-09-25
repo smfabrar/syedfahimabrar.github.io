@@ -9,13 +9,18 @@ sidebar:
 
     # Profile information
     name: Syed Mohammad Fahim Abrar
-    tagline: Full Stack GenAI Developer
+    tagline: AI Engineer
     avatar: profile.jpeg  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+    booking:
+      label: Book a quick chat
+      url: https://cal.fahimabrar.com/abrarfahim/quick-chat
+      icon: fas fa-calendar-check
 
     # Sidebar links
     email: mail@fahimabrar.com
-    timezone: Asia/Dhaka Timezone
-    citizenship: Bangladeshi
+    phone: +46 72-033 34 01
+    location: Stockholm, Sweden
+    timezone: Europe/Stockholm
     website: blog.fahimabrar.com #do not add http://
     linkedin: abrarfahim
     xing: 
@@ -27,7 +32,11 @@ sidebar:
     stack-overflow: 7584160/syed-mohammad-fahim-abrar # Number/Username, e.g. 123456/alandoe
     codewars:
     goodreads: # Number-Username, e.g. 123456-alandoe
-    pdf: http://fahimabrar.com/fahim_abrar.pdf
+    pdf: /fahim_abrar.pdf
+    links:
+      - label: LeetCode
+        url: https://leetcode.com/u/fahimabrar/
+        icon: fas fa-code
 
     languages:
       title: Languages
@@ -50,57 +59,78 @@ sidebar:
         - item: Cooking
           link:
 
+    internal-links:
+      title: Internal Links
+      links:
+        - label: Portainer
+          url: https://portainer.fahimabrar.com/
+          icon: fas fa-server
+        - label: AI
+          url: https://ai.fahimabrar.com
+          icon: fas fa-robot
+        - label: Calendar
+          url: https://cal.fahimabrar.com
+          icon: fas fa-calendar-alt
+        - label: Crypt
+          url: https://crypt.fahimabrar.com
+          icon: fas fa-lock
+        - label: n8n
+          url: https://n8n.fahimabrar.com
+          icon: fas fa-project-diagram
+        - label: Cloud
+          url: http://cloud.fahimabrar.com:81/
+          icon: fas fa-cloud
+        - label: Stats
+          url: https://stats.fahimabrar.com
+          icon: fas fa-chart-bar
+
 career-profile:
     title: Career Profile
     summary: |
-      As an experienced and dedicated Software Engineer, I have a strong passion for designing and implementing innovative solutions using cutting-edge technologies. My background includes extensive experience in microservices architectures, cloud computing, and AI-based projects, which has equipped me with a robust skill set to tackle complex technical challenges.
+      AI engineer with several years of software engineering experience across generative AI, healthcare platforms, microservices, and cloud systems. Combines hands-on AI development with a strong foundation in Python, .NET, and distributed software architecture. Currently pursuing an MSc in AI & Language at Stockholm University and seeking Research Engineer, AI Engineer, or AI Software Engineer opportunities.
 education:
     title: Education
     info:
+      - degree: MSc in AI & Language
+        university: Stockholm University
+        time: Sep. 2025 – Present
       - degree: BSc in Computer Science & Engineering
         university: Daffodil International University
-        time: 2016 - 2019
-        details: |
-          Describe your study here lorem ipsum dolor sit amet, consectetuer
-          adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-          sociis natoque penatibus et magnis dis parturient montes, nascetur
-          ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-          pretium quis, sem.
-            - Bullet point
-            - Bullet point
+        time: Jan. 2016 – Jan. 2020
 
 experiences:
     title: Experiences
     info:
+      - role: Research Assistant
+        time: May 2026 – Aug. 2026
+        company: KTH Royal Institute of Technology, Stockholm, SE
+        link: https://www.kth.se/en
+        details: |
+            - Developed [Hear-Me-Out](https://github.com/shreeharsha-bs/Hear-Me-Out), a research platform for controlled studies comparing conversational AI responses to natural and converted voices.
+            - Built React/TypeScript participant and researcher interfaces with FastAPI services for study configuration, counterbalanced assignments, and questionnaires.
+            - Engineered an Opus-over-WebSocket audio pipeline integrating NVIDIA PersonaPlex with MeanVC/X-VC for real-time voice conversion, plus Seed-VC for offline conversion.
+            - Implemented server-controlled voice switching and captured original and converted audio, transcripts, and session events for WER, speaker similarity, and UTMOS analysis.
+            - Migrated speech inference to local GPUs and deployed the services with Docker, isolated Python environments, and HTTPS/WSS.
       - role: Senior Software Engineer
-        time: Jan. 2025 – Present
+        time: Jan. 2025 – Aug. 2025
         company: Cefalo AS, Dhaka, BD
         link: https://cefalo.com
         details: |
-            - Designed and implemented microservices architecture using Azure Functions and Service Bus to enable
-              event-driven communication between microservices. detailed specifications with clear project deliverables and
-              timelines to meet strict deadlines.
-            - Led Generative AI based projects leveraging frameworks such as Llamacpp and llamaindex, and utilizing
-              state-of-the-art large language models like Whisper, OpenAI and Mistral etc.
+            - Led generative AI projects using Llama.cpp, LlamaIndex, Whisper, OpenAI, and Mistral.
+            - Built an AI-assisted mainframe code modernization platform for code generation, testing, documentation, dependency graphs, and migration plans.
+            - Developed a multi-tenant Blazor clinic portal and continued .NET WPF kiosk applications for appointments, check-in, and payments; added FlaUI regression tests.
+            - Built Python microservices, Dockerized code-execution sandboxes, and distributed processing with Celery and Redis.
+            - Designed a graph architecture for code dependencies and stored transformation artifacts in MinIO; built a FastAPI/SSE monitoring dashboard with Grafana and Langfuse tracing.
       - role: Software Engineer
         time: Jul. 2022 – Dec. 2024
         company: Cefalo AS, Dhaka, BD
         link: https://cefalo.com
         details: |
-            - Designed and implemented microservices architecture using Azure Functions and Service Bus to enable
-              event-driven communication between microservices. detailed specifications with clear project deliverables and
-              timelines to meet strict deadlines.
-            - Led Generative AI based projects leveraging frameworks such as Llamacpp and llamaindex, and utilizing
-              state-of-the-art large language models like Whisper, OpenAI and Mistral etc.
-            - Configured and managed Redis Cache, Azure Blob Storage to improve the performance and scalability of the
-              software system
-            - Configured and managed Azure API Gateway to manage and secure API access and provide analytics on API
-              usage, improving the security and usability of the software system.
-            - Developed and maintained CI/CD pipelines using Azure DevOps, reducing deployment time and ensuring the
-              availability and reliability of the software system.
-            - Architected high-performance data systems utilizing Cosmos DB, MSSQL, and Entity Framework
-            - Created and maintained technical documentation, user guides, and release notes, improving communication and
-              knowledge sharing within the team and client
+            - Designed event-driven microservices using Azure Functions and Service Bus, with Redis Cache and Azure Blob Storage.
+            - Integrated Cambio Cosmic, DIPS, Semble, and Dentally EHR systems with appointment and payment features; developed related WPF desktop applications.
+            - Built .NET Core and PostgreSQL healthcare services, including payment, invoicing, and debt-collection workflows.
+            - Managed API access through Azure API Management and CI/CD pipelines through Azure DevOps.
+            - Built data systems with Cosmos DB, MSSQL, and Entity Framework, and maintained technical documentation.
       - role: Software Engineer
         time: Jan. 2022 – Jun. 2022
         company: Brainstation23 Ltd, Dhaka, BD
@@ -118,7 +148,7 @@ experiences:
             - Designed client-side code with Angular, Rxjs, specifically known as reactive web app
             - Collaborated in integrating diverse stack web UI applications featuring web components from React, Angular
               etc.
-            - Implemented real-time communication and data transmission through SignalR and socket programming
+            - Implemented real-time communication and data transmission through SignalR and server-sent events.
       - role: Junior Software Engineer
         time: Nov. 2019 – Jun 2020
         company: Dynamic Solvers Bangladesh Ltd,Dhaka,BD
@@ -154,9 +184,26 @@ certifications:
 projects:
     title: Projects
     assignments:
+      - title: GpBot
+        skills: Python, PyTorch, Streamlit, Docker, BM25, BiLSTM
+        link: https://gpbot.fahimabrar.com/
+        links:
+          - label: Source code
+            url: https://github.com/syedfahimabrar/gpbot/
+        tagline: "A bilingual FAQ chatbot for Grameenphone that answers customer questions in English and Romanized Bangla."
+        responsibilities: |
+            - Trained a BiLSTM classifier to route queries into 14 intents and used BM25 to retrieve relevant FAQ answers.
+            - Built a Streamlit chat interface with conversation history.
+      - title: Terminal
+        skills: .NET Core, WPF, Blazor, Azure, FlaUI
+        link: https://convenegroup.com/solutions/terminals/indoor-terminal/
+        tagline: "A multi-tenant healthcare platform for clinic appointments, patient management, billing, and self-service."
+        responsibilities: |
+            - Built a shared backend, WPF patient kiosk, and Blazor portal for clinic staff across multiple organizations.
+            - Extended workflows from the Nordic region to the UK and integrated Cambio Cosmic, DIPS, Semble, and Dentally.
+            - Added automated desktop UI testing with FlaUI.
       - title: MeetSum
         skills: Python, NextJS, Runpod, Docker, CosmosDB, Llamacpp, Whisperx, Mistral-7b
-        link: "#hook"
         images:
             - image: /assets/project_images/meetsum1.jpeg
               id: 1
@@ -268,60 +315,99 @@ publications:
         conference: Daffodil International University, 2019-12-10
 
 skills:
-    title: Skills &amp; Proficiency
+    title: Technical Skills
 
     toolset:
       - type: Languages
         icon: fas fa-code
-        list: 
+        list:
             - name: C#
-            - name: Typescript
-            - name: Javascript
-            - name: MSSQL 
-            - name: Powershell 
-            - name: Python 
+            - name: TypeScript
+            - name: JavaScript
+            - name: PowerShell
+            - name: Python
+            - name: R
             - name: Bicep
       - type: Frameworks
         icon: fas fa-layer-group
         list:
-            - name: Asp.net Core 
-            - name: .Net Core 
-            - name: Angular 
-            - name: RxJS 
-            - name: Entity Framework 
-            - name: SignalR 
+            - name: ASP.NET Core
+            - name: .NET Core
+            - name: FastAPI
+            - name: Angular
+            - name: Blazor
+            - name: RxJS
+            - name: Entity Framework
+            - name: Microsoft Graph
+            - name: SignalR
             - name: XUnit
-      - type: DevOps Tools
+      - type: DevOps & IaC
         icon: fas fa-tools
         list:
              - name: Git
              - name: Docker
              - name: TravisCI
-             - name: Github Actions
-             - name: Azure Devops
-      - type: Database
+             - name: GitHub Actions
+             - name: Azure DevOps
+             - name: Bicep
+             - name: Pulumi
+      - type: Design Patterns
+        icon: fas fa-project-diagram
+        list:
+            - name: SOLID
+            - name: Singleton
+            - name: Factory
+            - name: MediatR
+            - name: CQRS
+      - type: Databases
         icon: fas fa-database
         list:
             - name: MSSQL
-            - name: CosmosDB
+            - name: PostgreSQL
+            - name: Cosmos DB
             - name: Redis
-            - name: MySQL
+            - name: Pinecone
+            - name: Neo4j
       - type: AI
         icon: fas fa-brain
         list:
-            - name: OpenAI API
-            - name: HuggingFace Transformers
-            - name: Llamacpp
+            - name: PyTorch
+            - name: scikit-learn
+            - name: NumPy
+            - name: pandas
+            - name: Matplotlib
+            - name: dplyr
+            - name: ggplot2
+            - name: tidyverse
+            - name: OpenAI
+            - name: vLLM
+            - name: LangChain
             - name: LlamaIndex
-            - name: Langchain
+            - name: AutoGen
+            - name: CrewAI
+            - name: Llama.cpp
             - name: PEFT
             - name: RAG
-            - name: Pandas
-            - name: Pytorch
-            - name: Generative AI
+            - name: MCP
+      - type: Observability
+        icon: fas fa-chart-line
+        list:
+            - name: Azure Application Insights
+            - name: Grafana
+            - name: Langfuse
+            - name: Weights & Biases
+      - type: Authentication
+        icon: fas fa-lock
+        list:
+            - name: Auth0
+            - name: Microsoft Entra ID
+            - name: OAuth 2.0
+            - name: OpenID Connect
+            - name: JWT
+            - name: RBAC
       - type: Cloud
         icon: fas fa-cloud
         list:
             - name: AWS
-            - name: Angular
+            - name: Azure
             - name: Kubernetes

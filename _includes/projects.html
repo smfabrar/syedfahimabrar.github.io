@@ -28,6 +28,9 @@
         <span class="project-skills">| {{ project.skills }}</span>
       </span>
       <br>
+      {% for link in project.links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+      {% endfor %}
       {% if project.images %}
       <div class="details">
         {% include post-slideshow.html project=project %}
