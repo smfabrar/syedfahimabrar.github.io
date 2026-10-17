@@ -17,7 +17,7 @@ chrome_mobile_color: #use hex colors (ex:#1976d2) or leave empty if you don't wa
 analytics:
 
 # Microsoft Clarity: paste the project ID from Settings > Setup.
-# Enabled only in production builds, after the visitor accepts analytics.
+# Enabled only in production builds, with analytics and advertising cookies denied.
 clarity_project_id: "yz7owjlnqr"
 
 # Sass/SCSS

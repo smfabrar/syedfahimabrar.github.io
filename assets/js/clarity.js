@@ -3,56 +3,21 @@
 
   var config = document.getElementById('portfolio-analytics');
   var projectId = config && config.getAttribute('data-project-id');
-  var banner = document.getElementById('analytics-consent');
-  var settings = document.getElementById('analytics-settings');
-  var settingsButton = document.getElementById('analytics-settings-button');
-  if (!projectId || !/^[a-z0-9]+$/i.test(projectId) || !banner || !settingsButton) return;
+  if (!projectId || !/^[a-z0-9]+$/i.test(projectId)) return;
 
-  var storageKey = 'portfolio-analytics-consent-v1';
-  var enabled = false;
-  var trackingStarted = false;
-
-  function readConsent() {
-    try { return window.localStorage.getItem(storageKey); }
-    catch (error) { return null; }
-  }
-
-  function showPreferences(show) {
-    banner.hidden = !show;
-    settingsButton.setAttribute('aria-expanded', String(show));
-  }
-
-  function sendConsent(value) {
-    window.clarity('consentv2', { analytics_Storage: value, ad_Storage: 'denied' });
-  }
-
-  function disableAnalytics() {
-    if (!enabled) return;
-    enabled = false;
-    sendConsent('denied');
-    // Unload the recorder when consent is withdrawn, including its event listeners.
-    window.location.reload();
-  }
-
-  function enableAnalytics() {
-    if (enabled) return;
-    enabled = true;
-    // Queue consent before requesting Microsoft's script. No request is made before opt-in.
-    window.clarity = window.clarity || function () {
-      (window.clarity.q = window.clarity.q || []).push(arguments);
-    };
-    sendConsent('granted');
-    window.clarity('set', 'site', 'portfolio');
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.clarity.ms/tag/' + projectId;
-    document.head.appendChild(script);
-    if (!trackingStarted) {
-      trackingStarted = true;
-      trackEngagement();
-      document.addEventListener('click', trackClick, true);
-    }
-  }
+  window.clarity = window.clarity || function () {
+    (window.clarity.q = window.clarity.q || []).push(arguments);
+  };
+  // Always use cookieless mode, regardless of choices saved by the previous banner.
+  // Queue both denials before requesting Microsoft's script to prevent cookie storage.
+  window.clarity('consentv2', { analytics_Storage: 'denied', ad_Storage: 'denied' });
+  window.clarity('set', 'site', 'portfolio');
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.clarity.ms/tag/' + projectId;
+  document.head.appendChild(script);
+  trackEngagement();
+  document.addEventListener('click', trackClick, true);
 
   function context(element, prefix) {
     var section = element.closest('[data-analytics-section]');
@@ -63,7 +28,7 @@
   }
 
   function trackClick(event) {
-    if (!enabled || !(event.target instanceof Element)) return;
+    if (!(event.target instanceof Element)) return;
     var link = event.target.closest('a[href], .booking-link');
     if (!link) return;
     var name;
@@ -102,7 +67,7 @@
         } else if (!seen.has(element) && !timers.has(element)) {
           timers.set(element, window.setTimeout(function () {
             timers.delete(element);
-            if (!enabled || document.hidden) return;
+            if (document.hidden) return;
             seen.add(element);
             observer.unobserve(element);
             var section = context(element, 'viewed');
@@ -116,7 +81,7 @@
       timers.forEach(function (timer) { window.clearTimeout(timer); });
       timers.clear();
       observer.disconnect();
-      if (!document.hidden && enabled) {
+      if (!document.hidden) {
         targets.forEach(function (element) {
           if (!seen.has(element)) observer.observe(element);
         });
@@ -126,45 +91,4 @@
     observeVisiblePage();
   }
 
-  banner.addEventListener('click', function (event) {
-    var choice = event.target.closest('[data-analytics-choice]');
-    if (!choice) return;
-    var value = choice.getAttribute('data-analytics-choice');
-    try { window.localStorage.setItem(storageKey, value); }
-    catch (error) {
-      // Remove a stale saved opt-in if storage can be read but cannot accept new values.
-      try { window.localStorage.removeItem(storageKey); } catch (ignored) { /* Storage is unavailable. */ }
-    }
-    showPreferences(false);
-    settingsButton.focus();
-    if (value === 'granted') enableAnalytics();
-    else disableAnalytics();
-  });
-
-  // Keep the saved browser choice effective in every open portfolio tab.
-  window.addEventListener('storage', function (event) {
-    if (event.key !== storageKey && event.key !== null) return;
-    if (event.newValue === 'granted') {
-      showPreferences(false);
-      enableAnalytics();
-    } else {
-      showPreferences(event.newValue !== 'denied');
-      disableAnalytics();
-    }
-  });
-
-  settings.hidden = false;
-  settingsButton.addEventListener('click', function () {
-    showPreferences(banner.hidden);
-    if (!banner.hidden) banner.querySelector('button').focus();
-  });
-  banner.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      showPreferences(false);
-      settingsButton.focus();
-    }
-  });
-  var consent = readConsent();
-  if (consent === 'granted') enableAnalytics();
-  else if (consent !== 'denied') showPreferences(true);
 })();

@@ -68,11 +68,13 @@ bundle exec jekyll serve
 
 1. Create a project for `https://fahimabrar.com` at [Microsoft Clarity](https://clarity.microsoft.com/).
 2. Copy the project ID from **Settings → Setup** (the value after `/tag/` in the tracking snippet) into `clarity_project_id` in `_config.yml`. The ID is public; no API secret is needed.
-3. In Clarity, configure cookie consent as required, keep sensitive content masking enabled, and leave advertising integrations off unless you separately obtain the appropriate consent.
-4. Deploy the site through GitHub Pages. For a local production preview, use `JEKYLL_ENV=production bundle exec jekyll serve`. Development builds and builds with an empty project ID do not load analytics or display its controls.
-5. Visit the deployed portfolio and choose **Accept analytics**. Check Clarity’s Dashboard and Recordings for the visit. A browser content blocker may prevent collection.
+3. In Clarity, keep consent mode and sensitive content masking enabled, and leave advertising integrations off. The site always sends denied analytics and advertising storage signals.
+4. Deploy the site through GitHub Pages. For a local production preview, use `JEKYLL_ENV=production bundle exec jekyll serve`. Development builds and builds with an empty project ID do not load analytics.
+5. Visit the deployed portfolio and check Clarity’s Dashboard and Recordings for the visit. A browser content blocker or Clarity’s regional restrictions may limit collection.
 
-The site requests Clarity only after acceptance. It sends `consentv2` with analytics storage granted and advertising storage denied. Declining loads no recorder. **Analytics preferences** lets visitors change their choice; withdrawing consent reloads recording tabs to unload the recorder. The choice is stored per browser and synchronized across open portfolio tabs. [Privacy details](https://fahimabrar.com/privacy/) describe the collection.
+The site loads Clarity in **cookieless mode**, with no banner, warning, preferences button, or privacy page. It queues `consentv2` with both `analytics_Storage` and `ad_Storage` set to `denied` before requesting Microsoft's script. It does not read or save consent preferences, including any opt-in saved by the previous banner. Existing Clarity cookies are handled by Clarity's denied-consent behavior.
+
+Cookieless mode keeps page interactions and custom engagement events where supported, but it cannot reliably recognize returning visitors or connect page views. Reloads can inflate unique visitor and session counts; attribution, duration, and intent reports can be less accurate. See [Microsoft's limitations](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-without-cookie-consent).
 
 ### Find what interests visitors
 
