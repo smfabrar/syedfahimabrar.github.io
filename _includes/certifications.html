@@ -1,5 +1,5 @@
 {% assign certifications = site.data.data.certifications %} {% if certifications %}
-<section class="section certifications-section">
+<section class="section certifications-section" data-analytics-section="certifications">
   <h2 class="section-title">
     <span class="fa-stack fa-xs">
       <i class="fas fa-circle fa-stack-2x"></i>
@@ -9,7 +9,7 @@
   </h2>
 
   {% for certifications in certifications.list %}
-  <div class="item">
+  <div class="item" data-analytics-item="{{ certifications.name | escape }}">
     <div class="meta">
       <div class="upper-row">
         <h3 class="cert-title">{{ certifications.name }}</h3>

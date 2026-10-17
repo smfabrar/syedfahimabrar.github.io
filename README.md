@@ -64,6 +64,34 @@ bundle exec jekyll serve
 * Navigate to `http://localhost:4000`
 
 
+## Portfolio analytics (Microsoft Clarity)
+
+1. Create a project for `https://fahimabrar.com` at [Microsoft Clarity](https://clarity.microsoft.com/).
+2. Copy the project ID from **Settings → Setup** (the value after `/tag/` in the tracking snippet) into `clarity_project_id` in `_config.yml`. The ID is public; no API secret is needed.
+3. In Clarity, configure cookie consent as required, keep sensitive content masking enabled, and leave advertising integrations off unless you separately obtain the appropriate consent.
+4. Deploy the site through GitHub Pages. For a local production preview, use `JEKYLL_ENV=production bundle exec jekyll serve`. Development builds and builds with an empty project ID do not load analytics or display its controls.
+5. Visit the deployed portfolio and choose **Accept analytics**. Check Clarity’s Dashboard and Recordings for the visit. A browser content blocker may prevent collection.
+
+The site requests Clarity only after acceptance. It sends `consentv2` with analytics storage granted and advertising storage denied. Declining loads no recorder. **Analytics preferences** lets visitors change their choice; withdrawing consent reloads recording tabs to unload the recorder. The choice is stored per browser and synchronized across open portfolio tabs. [Privacy details](https://fahimabrar.com/privacy/) describe the collection.
+
+### Find what interests visitors
+
+Use **Filters → Custom tags** alongside **Smart events** to find relevant session recordings:
+
+| Event or tag | Meaning |
+| --- | --- |
+| `summary_engaged`, `experience_engaged`, `education_engaged`, `certifications_engaged`, `projects_engaged`, `open_source_engaged`, `publications_engaged`, `skills_engaged` | The section intersected the viewport for at least two continuous seconds while the tab was visible. This indicates exposure, not proof it was read. |
+| `portfolio_item_engaged` | An individual project, experience, certification, publication, open source contribution, or skill group met the same visibility threshold. |
+| `viewed_section`, `viewed_item` | The section and item names associated with engagement. Each is a session tag: a session can accumulate multiple values. |
+| `projects_link_click`, `publications_link_click`, `open_source_link_click`, `experience_link_click`, `education_link_click`, `certifications_link_click`, `skills_link_click`, `summary_link_click` | A link was clicked inside that section. Events occur only where links exist. |
+| `clicked_section`, `clicked_item` | Context for clicks; use event details in the recording to inspect the precise sequence. Session tag combinations do not prove which action involved which item. |
+| `resume_click`, `email_click`, `phone_click`, `booking_open`, `linkedin_click`, `github_profile_click`, `other_site_click` | A résumé, contact, social profile, or linked site was opened. A résumé click does not confirm a download; booking and email clicks do not confirm completion. |
+| `outbound_link_click`, `outbound_host` | An external web link was clicked; only its hostname is added as a custom tag. |
+
+For example, filter `viewed_section = projects` and `booking_open` to review visits that included project engagement and an attempt to open your calendar. Use heatmaps for click and scroll patterns and recordings for the order of interactions. Clarity provides pseudonymous visitor/session insights, not real names or employers. The site sends no custom visitor identifiers, form values, email addresses, phone numbers, or link query parameters as custom tags. The external booking popup’s contents and booking completion are not tracked.
+
+The theme’s retired Universal Analytics setting is disabled. Existing Google Analytics code remains available only if `analytics` is deliberately configured.
+
 ## Skins
 
 There are 6 color schemes available:

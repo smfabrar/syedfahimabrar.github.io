@@ -3,3 +3,6 @@
 <script src="{{ site.baseurl }}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 {% include booking-embed.html %}
 {% if site.analytics %} {% include analytics.html %} {% endif %}
+{% if jekyll.environment == 'production' and site.clarity_project_id != empty and site.clarity_project_id %}
+{% include analytics-consent.html %}
+{% endif %}

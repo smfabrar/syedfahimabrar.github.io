@@ -1,5 +1,5 @@
 {% assign skills = site.data.data.skills %} {% if skills %}
-<section class="section skill-section">
+<section class="section skill-section" data-analytics-section="skills">
   <h2 class="section-title">
     <span class="fa-stack fa-xs">
       <i class="fas fa-circle fa-stack-2x"></i>
@@ -10,7 +10,7 @@
 
   <div class="skill-groups">
     {% for skill in skills.toolset %}
-    <div class="skill-group">
+    <div class="skill-group" data-analytics-item="{{ skill.type | escape }}">
       <h3 class="skill-group-title"><i class="{{ skill.icon }}" aria-hidden="true"></i>{{ skill.type }}</h3>
       <ul class="skill-list">
         {% for subSkill in skill.list %}

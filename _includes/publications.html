@@ -1,6 +1,6 @@
 {% assign publications = site.data.data.publications %}
 {% if publications %}
-<section class="section publications-section">
+<section class="section publications-section" data-analytics-section="publications">
 
   <h2 class="section-title">
     <span class="fa-stack fa-xs">
@@ -17,7 +17,7 @@
   {% endif %}
 
   {% for publication in publications.papers %}
-  <div class="item">
+  <div class="item" data-analytics-item="{{ publication.title | escape }}">
     {% if publication.link %}
       <li><a href="{{ publication.link }}">{{ publication.title }}</a></li>
     {% else %}

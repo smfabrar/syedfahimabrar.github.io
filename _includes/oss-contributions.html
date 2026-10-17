@@ -1,6 +1,6 @@
 {% assign oss = site.data.data.oss %}
 {% if oss %}
-<section class="section oss-section">
+<section class="section oss-section" data-analytics-section="open_source">
   <h2 class="section-title">
     <span class="fa-stack fa-xs">
       <i class="fas fa-circle fa-stack-2x"></i>
@@ -17,7 +17,7 @@
   {% endif %}
 
   {% for contribution in oss.contributions %}
-  <div class="item">
+  <div class="item" data-analytics-item="{{ contribution.title | escape }}">
 
     <span class="project-title">
       {% if contribution.link %}

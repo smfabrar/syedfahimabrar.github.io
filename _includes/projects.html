@@ -1,6 +1,6 @@
 {% assign projects = site.data.data.projects %}
 {% if projects %}
-<section class="section projects-section">
+<section class="section projects-section" data-analytics-section="projects">
 
   <h2 class="section-title">
     <span class="fa-stack fa-xs">
@@ -17,7 +17,7 @@
   {% endif %}
 
   {% for project in projects.assignments %}
-    <div class="item">
+    <div class="item" data-analytics-item="{{ project.title | escape }}">
 
       <span class="project-title">
         {% if project.link %}

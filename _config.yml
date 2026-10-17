@@ -13,8 +13,12 @@ description: Portfolio of Fahim Abrar, an AI engineer in Stockholm with experien
 theme_skin: blue # blue turquoise green berry orange ceramic
 chrome_mobile_color: #use hex colors (ex:#1976d2) or leave empty if you don't want a color for chrome mobile searchbar
 
-# Tracker
-analytics: UA-83979019-1
+# Legacy Universal Analytics (retired).
+analytics:
+
+# Microsoft Clarity: paste the project ID from Settings > Setup.
+# Enabled only in production builds, after the visitor accepts analytics.
+clarity_project_id: "yz7owjlnqr"
 
 # Sass/SCSS
 sass:
